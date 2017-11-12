@@ -28,12 +28,16 @@ public class Recipe implements Parcelable{
     @SerializedName("servings")
     int servings;
 
+    @SerializedName("image")
+    String image;
+
     protected Recipe(Parcel in) {
         recipeId = in.readInt();
         recipeName = in.readString();
         ingredients = in.createTypedArrayList(Ingredients.CREATOR);
         steps = in.createTypedArrayList(RecipeSteps.CREATOR);
         servings = in.readInt();
+        image = in.readString();
     }
 
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
@@ -68,6 +72,8 @@ public class Recipe implements Parcelable{
         return servings;
     }
 
+    public String getImage() { return image; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -80,5 +86,6 @@ public class Recipe implements Parcelable{
         parcel.writeTypedList(ingredients);
         parcel.writeTypedList(steps);
         parcel.writeInt(servings);
+        parcel.writeString(image);
     }
 }

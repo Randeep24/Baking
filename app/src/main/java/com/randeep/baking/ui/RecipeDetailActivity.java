@@ -79,31 +79,32 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeDet
             }
         });
 
+        if(savedInstanceState == null) {
+            if (findViewById(R.id.recipeStepFragment) != null) {
+                twoPane = true;
+                if (savedInstanceState == null) {
+                    RecipeDetailFragment recipeDetailFragment = new RecipeDetailFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.recipeDetailFragment, recipeDetailFragment)
+                            .commitAllowingStateLoss();
 
-        if (findViewById(R.id.recipeStepFragment) != null) {
-            twoPane = true;
-            if (savedInstanceState == null) {
+                    RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
+                    Bundle bundlefragment = new Bundle();
+                    bundlefragment.putParcelable(RECIPE_STEP, recipeSteps.get(0));
+                    recipeStepFragment.setArguments(bundlefragment);
+
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.recipeStepFragment, recipeStepFragment)
+                            .commitAllowingStateLoss();
+                }
+
+            } else {
+                twoPane = false;
                 RecipeDetailFragment recipeDetailFragment = new RecipeDetailFragment();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.recipeDetailFragment, recipeDetailFragment)
                         .commitAllowingStateLoss();
-
-                RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
-                Bundle bundlefragment = new Bundle();
-                bundlefragment.putParcelable(RECIPE_STEP, recipeSteps.get(0));
-                recipeStepFragment.setArguments(bundlefragment);
-
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.recipeStepFragment, recipeStepFragment)
-                        .commitAllowingStateLoss();
             }
-
-        } else {
-            twoPane = false;
-            RecipeDetailFragment recipeDetailFragment = new RecipeDetailFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.recipeDetailFragment, recipeDetailFragment)
-                    .commitAllowingStateLoss();
         }
 
 

@@ -16,6 +16,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/recipe_image"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="@dimen/card_ingredient_item_marging"
+            android:layout_marginStart="@dimen/card_ingredient_item_marging"
+            android:layout_marginTop="@dimen/card_ingredient_item_marging"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="invisible"/>
+
         <TextView
             android:id="@+id/recipe_icon"
             android:layout_width="wrap_content"
@@ -39,7 +51,7 @@
             android:textColor="@android:color/black"
             android:textSize="@dimen/recipe_name_size"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/recipe_icon"
+            app:layout_constraintStart_toEndOf="@+id/recipe_image"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Nutella pie" />
 

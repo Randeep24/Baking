@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -34,6 +35,7 @@ import com.google.android.exoplayer2.util.Util;
 import com.randeep.baking.R;
 import com.randeep.baking.util.Utility;
 import com.randeep.baking.bean.RecipeSteps;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,8 +57,14 @@ public class RecipeStepFragment extends Fragment implements Player.EventListener
 
     @BindView(R.id.step)
     TextView step;
+
     @BindView(R.id.playerView)
     SimpleExoPlayerView mPlayerView;
+
+    @BindView(R.id.videoThumbnail)
+    ImageView videoThumbnail;
+
+    long playerPosition = 0;
 
     public RecipeStepFragment() {
 
@@ -67,6 +75,10 @@ public class RecipeStepFragment extends Fragment implements Player.EventListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        if (savedInstanceState != null) {
+            playerPosition = savedInstanceState.getLong("PLAYER_POSITION");
+        }
+
         Bundle bundle = getArguments();
         recipeSteps = bundle.getParcelable(RECIPE_STEP);
 
@@ -76,14 +88,17 @@ public class RecipeStepFragment extends Fragment implements Player.EventListener
         step.setText(recipeSteps.getDescription());
 
 
-        if (recipeSteps.getVideoUrl() != null && !recipeSteps.getVideoUrl().isEmpty()) {
-            initializePlayer(Uri.parse(recipeSteps.getVideoUrl()));
-        } else {
+        if (recipeSteps.getVideoUrl() == null || recipeSteps.getVideoUrl().isEmpty()) {
 
-            mPlayerView.setVisibility(View.GONE);
+            mPlayerView.setVisibility(View.INVISIBLE);
+            if (!recipeSteps.getThumbnailUrl().isEmpty()) {
+                Picasso.with(getActivity()).load(recipeSteps.getThumbnailUrl())
+                        .fit()
+                        .into(videoThumbnail);
+            } else {
+                mPlayerView.setVisibility(View.GONE);
+            }
         }
-
-
         return rootView;
     }
 
@@ -94,7 +109,13 @@ public class RecipeStepFragment extends Fragment implements Player.EventListener
         if (!Utility.isSW600dp((AppCompatActivity) getActivity()) &&
                 getActivity().getResources().getConfiguration().orientation ==
                         Configuration.ORIENTATION_LANDSCAPE) {
-            mPlayerView.getLayoutParams().height = Utility.getWidthOfDevice((AppCompatActivity) getActivity());
+
+            mPlayerView.getLayoutParams().height =
+                    Utility.getWidthOfDevice((AppCompatActivity) getActivity());
+
+            View decorView = getActivity().getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
         }
 
     }
@@ -115,38 +136,43 @@ public class RecipeStepFragment extends Fragment implements Player.EventListener
                     getActivity(), userAgent), new DefaultExtractorsFactory(), null, null);
             mPlayer.prepare(mediaSource);
             mPlayer.setPlayWhenReady(true);
+            mPlayer.seekTo(playerPosition);
         }
     }
 
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        releasePlayer();
-    }
 
     @Override
     public void onPause() {
         super.onPause();
-        if(mPlayer != null && mPlayer.getPlayWhenReady()){
-            mPlayer.setPlayWhenReady(false);
-        }
+        releasePlayer();
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if(mPlayer != null && !mPlayer.getPlayWhenReady()){
-            mPlayer.setPlayWhenReady(true);
+
+        if (recipeSteps.getVideoUrl() != null && !recipeSteps.getVideoUrl().isEmpty()) {
+            initializePlayer(Uri.parse(recipeSteps.getVideoUrl()));
         }
+
     }
 
     private void releasePlayer() {
         if (mPlayer != null) {
+            playerPosition = mPlayer.getCurrentPosition();
             mPlayer.stop();
             mPlayer.release();
             mPlayer = null;
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putLong("PLAYER_POSITION", playerPosition);
+
     }
 
     @Override

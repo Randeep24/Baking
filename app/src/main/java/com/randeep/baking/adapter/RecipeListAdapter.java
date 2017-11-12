@@ -1,14 +1,17 @@
 package com.randeep.baking.adapter;
 
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.randeep.baking.R;
 import com.randeep.baking.bean.Recipe;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         @BindView(R.id.recipe_icon) TextView recipeIcon;
         @BindView(R.id.recipe_name) TextView heading;
         @BindView(R.id.servings) TextView serving;
+        @BindView(R.id.recipe_image) ImageView recipeImage;
 
         public RecipeViewHolder(View itemView) {
             super(itemView);
@@ -71,6 +75,13 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
         holder.heading.setText(recipeList.get(position).getRecipeName());
         holder.serving.setText("Servings: " + recipeList.get(position).getServings());
+        if(!recipeList.get(position).getImage().isEmpty()){
+            holder.heading.setVisibility(View.INVISIBLE);
+            holder.recipeImage.setVisibility(View.VISIBLE);
+            Picasso.with(holder.itemView.getContext())
+                    .load(Uri.parse(recipeList.get(position).getImage()))
+                    .into(holder.recipeImage);
+        }
     }
 
     @Override
