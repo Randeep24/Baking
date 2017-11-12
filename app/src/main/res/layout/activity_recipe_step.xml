@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_drawable"
+    tools:context="com.randeep.baking.ui.RecipeStepActivity">
+
+
+    <FrameLayout
+        android:id="@+id/recipe_step_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/step_margin_top"
+        android:layout_marginRight="@dimen/step_margin_top"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/previousActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/list_view_margin_top_bottom"
+        android:layout_marginStart="@dimen/list_view_margin_top_bottom"
+        android:clickable="true"
+        android:visibility="gone"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_first_page" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/nextActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/list_view_margin_top_bottom"
+        android:layout_marginEnd="@dimen/list_view_margin_top_bottom"
+        android:clickable="true"
+        android:visibility="gone"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_last_page" />
+
+</RelativeLayout>
+
+

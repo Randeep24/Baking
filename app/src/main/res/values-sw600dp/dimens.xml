@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="title_size">45sp</dimen>
+    <dimen name="list_view_margin_top_bottom">12dp</dimen>
+    <dimen name="play_pause_button">75dp</dimen>
+    <dimen name="button_margin_bottom">90dp</dimen>
+    <dimen name="default_timebar_height">39dp</dimen>
+    <dimen name="player_duration_text_size">21sp</dimen>
+    <dimen name="duration_text_padding">6dp</dimen>
+    <dimen name="step_text_padding">15dp</dimen>
+    <dimen name="card_margin">3dp</dimen>
+    <dimen name="player_height">450dp</dimen>
+    <dimen name="card_radius">9dp</dimen>
+    <dimen name="card_elevation">6dp</dimen>
+    <dimen name="card_ingredient_item_marging">24dp</dimen>
+    <dimen name="ingredient_list_item_margin">15dp</dimen>
+    <dimen name="ingredient_list_item_text_size">18sp</dimen>
+    <dimen name="widget_text_margin">6dp</dimen>
+    <dimen name="widget_heading_text_size">25sp</dimen>
+    <dimen name="heading_padding">10dp</dimen>
+    <dimen name="icon_size">100dp</dimen>
+    <dimen name="recipe_name_margin">36dp</dimen>
+    <dimen name="recipe_name_size">27sp</dimen>
+    <dimen name="serving_text_margin">3dp</dimen>
+    <dimen name="step_list_item_margin">15dp</dimen>
+    <dimen name="widget_list_item_padding">20dp</dimen>
+    <dimen name="step_margin_top">20dp</dimen>
+    <dimen name="regular_text_size">16sp</dimen>
+
+</resources>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="#48000000">
+
+    <ImageButton
+        android:id="@+id/exo_play"
+        android:layout_width="@dimen/play_pause_button"
+        android:layout_height="@dimen/play_pause_button"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="@dimen/button_margin_bottom"
+        app:srcCompat="@drawable/ic_play" />
+    <ImageButton
+        android:id="@+id/exo_pause"
+        android:layout_width="@dimen/play_pause_button"
+        android:layout_height="@dimen/play_pause_button"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_pause"
+        android:layout_marginBottom="@dimen/button_margin_bottom"/>
+
+    <com.google.android.exoplayer2.ui.DefaultTimeBar
+        android:id="@id/exo_progress"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/default_timebar_height"
+        android:layout_marginBottom="@dimen/list_view_margin_top_bottom"
+        android:layout_marginEnd="@dimen/list_view_margin_top_bottom"
+        android:layout_marginStart="@dimen/list_view_margin_top_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/exo_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/list_view_margin_top_bottom"
+        android:layout_marginStart="@dimen/list_view_margin_top_bottom"
+        android:textSize="@dimen/player_duration_text_size"
+        android:textStyle="bold"
+        android:paddingLeft="@dimen/duration_text_padding"
+        android:paddingRight="@dimen/duration_text_padding"
+        android:includeFontPadding="false"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/exo_progress"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/exo_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/list_view_margin_top_bottom"
+        android:layout_marginEnd="@dimen/list_view_margin_top_bottom"
+        android:includeFontPadding="false"
+        android:paddingLeft="@dimen/duration_text_padding"
+        android:paddingRight="@dimen/duration_text_padding"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/player_duration_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/exo_progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="parent" />
+</android.support.constraint.ConstraintLayout>

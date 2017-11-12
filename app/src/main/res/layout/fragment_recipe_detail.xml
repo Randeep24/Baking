@@ -1,0 +1,14 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.randeep.baking.ui.RecipeDetailFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="@dimen/list_view_margin_top_bottom"
+        android:layout_marginBottom="@dimen/list_view_margin_top_bottom"
+        android:id="@+id/recipe_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>

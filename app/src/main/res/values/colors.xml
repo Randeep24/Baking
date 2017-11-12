@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#d33440</color>
+    <color name="cardBackground">#f26f79</color>
+    <color name="colorPrimaryDark">#B92E38</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="widget_item_color">#545454</color>
+</resources>

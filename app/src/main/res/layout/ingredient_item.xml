@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/card_radius"
+    app:cardElevation="@dimen/card_elevation"
+    android:layout_marginBottom="@dimen/list_view_margin_top_bottom"
+    android:layout_marginLeft="@dimen/card_ingredient_item_marging"
+    android:layout_marginRight="@dimen/card_ingredient_item_marging"
+    android:layout_marginTop="@dimen/list_view_margin_top_bottom"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/ingredient_list_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ingredient_list_item_margin"
+        android:textSize="@dimen/ingredient_list_item_text_size"
+        android:textColor="@android:color/black"/>
+
+</android.support.v7.widget.CardView>
