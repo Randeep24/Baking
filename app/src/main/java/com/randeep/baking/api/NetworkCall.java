@@ -1,8 +1,6 @@
 package com.randeep.baking.api;
 
-import android.content.Context;
-
-import com.randeep.baking.IdlingResource.SimpleIdlingResource;
+import com.randeep.baking.idlingResource.SimpleIdlingResource;
 import com.randeep.baking.bean.Recipe;
 
 import java.util.ArrayList;

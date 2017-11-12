@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.randeep.baking.IdlingResource.SimpleIdlingResource;
+import com.randeep.baking.idlingResource.SimpleIdlingResource;
 import com.randeep.baking.R;
 import com.randeep.baking.adapter.RecipeListAdapter;
 import com.randeep.baking.api.NetworkCall;
